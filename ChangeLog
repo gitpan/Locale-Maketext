@@ -1,5 +1,12 @@
 Revision history for Perl suite Locale::Maketext
 
+2009-06-20  Adriano Ferreira
+    * Development release 1.13_80
+
+    Fixes CPAN RT #25877 (thanks imacat)
+
+    Add a test for failure_handler_auto()
+
 2008-05-28  Adriano Ferreira
     * Release 1.13
 

@@ -17,6 +17,7 @@ t/30_local.t
 t/40_super.t
 t/50_super.t
 t/60_super.t
+t/70_fail_auto.t
 t/90_utf8.t
 t/pod.t
 META.yml                                 Module meta-data (added by MakeMaker)

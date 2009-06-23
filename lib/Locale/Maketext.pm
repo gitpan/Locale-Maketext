@@ -10,7 +10,8 @@ use I18N::LangTags 0.30 ();
 BEGIN { unless(defined &DEBUG) { *DEBUG = sub () {0} } }
 # define the constant 'DEBUG' at compile-time
 
-$VERSION = '1.13';
+$VERSION = '1.13_80';
+$VERSION = eval $VERSION;
 @ISA = ();
 
 $MATCH_SUPERS = 1;
@@ -131,8 +132,7 @@ sub failure_handler_auto {
     $handle->{'failure_lex'} ||= {};
     my $lex = $handle->{'failure_lex'};
 
-    my $value;
-    $lex->{$phrase} ||= ($value = $handle->_compile($phrase));
+    my $value = $lex->{$phrase} ||= $handle->_compile($phrase);
 
     # Dumbly copied from sub maketext:
     return ${$value} if ref($value) eq 'SCALAR';
