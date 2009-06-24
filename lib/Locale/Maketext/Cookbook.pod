@@ -1,0 +1,67 @@
+# This document contains text in Perl "POD" format.
+# Use a POD viewer like perldoc or perlman to render it.
+
+=head1 NAME
+
+Locale::Maketext::Cookbook - recipes for using Locale::Maketext
+
+=head1 INTRODUCTION
+
+This is a work in progress. Not much progress by now :-)
+
+=head1 ONESIDED LEXICONS
+
+    Adapted from a suggestion by Dan Muey
+
+It may be common (for example at your main lexicon) that
+the hash keys and values coincide. Like that
+
+    q{Hello, tell me your name} 
+      => q{Hello, tell me your name}
+
+It would be nice to just write:
+
+    q{Hello, tell me your name} => ''
+
+and have this magically inflated to the first form.
+Among the advantages of such representation, that would
+lead to  
+smaller files, less prone to mistyping or mispasting, 
+and handy to someone translating it which can simply 
+copy the main lexicon and enter the translation 
+instead of having to remove the value first.
+
+That can be achieved by overriding C<init>
+in your class and working on the main lexicon
+with code like that:
+
+    package My::I18N;
+    ...
+
+    sub init {
+        my $lh = shift; # a newborn handle
+        $lh->SUPER::init();
+        inflate_lexicon(\%My::I18N::en::Lexicon);
+        return;
+    }
+
+    sub inflate_lexicon {
+        my $lex = shift;
+        while (my ($k, $v) = each %$lex) {
+            $v = $k if !defined $v || $v eq '';
+        }
+    }
+
+Here we are assuming C<My::I18N::en> to own the
+main lexicon.
+
+There are some downsides here: the size economy
+will not stand at runtime after this C<init()>
+runs. But it should not be that critical, since
+if you don't have space for that, you won't have
+space for any other language besides the main one
+as well. You could do that too with ties,
+expanding the value at lookup time which
+should be more time expensive as an option.
+
+

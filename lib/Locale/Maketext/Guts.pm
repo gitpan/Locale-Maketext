@@ -48,7 +48,7 @@ sub _compile {
                 $
             )/xgs
         ) {
-            DEBUG>2 and print qq{  "$1"\n};
+            DEBUG>2 and warn qq{  "$1"\n};
 
             if($1 eq '[' or $1 eq '') {       # "[" or end
                 # Whether this is "[" or end, force processing of any
@@ -63,7 +63,7 @@ sub _compile {
                 }
                 else {
                     if ($1 eq '') {
-                        DEBUG>2 and print "   [end-string]\n";
+                        DEBUG>2 and warn "   [end-string]\n";
                     }
                     else {
                         $in_group = 1;
@@ -98,12 +98,12 @@ sub _compile {
                 if($in_group) {
                     $in_group = 0;
 
-                    DEBUG>2 and print "   --Closing group [$c[-1]]\n";
+                    DEBUG>2 and warn "   --Closing group [$c[-1]]\n";
 
                     # And now process the group...
 
                     if(!length($c[-1]) or $c[-1] =~ m/^\s+$/s) {
-                        DEBUG > 2 and print "   -- (Ignoring)\n";
+                        DEBUG>2 and warn "   -- (Ignoring)\n";
                         $c[-1] = ''; # reset out chink
                         next;
                     }

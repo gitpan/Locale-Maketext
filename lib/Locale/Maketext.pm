@@ -10,7 +10,7 @@ use I18N::LangTags 0.30 ();
 BEGIN { unless(defined &DEBUG) { *DEBUG = sub () {0} } }
 # define the constant 'DEBUG' at compile-time
 
-$VERSION = '1.13_80';
+$VERSION = '1.13_81';
 $VERSION = eval $VERSION;
 @ISA = ();
 
@@ -205,7 +205,7 @@ sub maketext {
             $value = $h_r->{$phrase} = $handle->_compile($phrase);
             last;
         }
-        DEBUG>1 and print "  Not found in $h_r, nor automakable\n";
+        DEBUG>1 and warn "  Not found in $h_r, nor automakable\n";
         # else keep looking
     }
 

@@ -4,6 +4,7 @@ lib/Locale/Maketext.pod
 lib/Locale/Maketext/Guts.pm
 lib/Locale/Maketext/GutsLoader.pm
 lib/Locale/Maketext/TPJ13.pod
+lib/Locale/Maketext/Cookbook.pod
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
