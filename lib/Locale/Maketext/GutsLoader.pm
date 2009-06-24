@@ -1,6 +1,7 @@
 package Locale::Maketext::GutsLoader;
 
-$VERSION = '1.13';
+$VERSION = '1.13_82';
+$VERSION = eval $VERSION;
 
 use strict;
 sub zorp { return scalar @_ }
@@ -36,7 +37,7 @@ if ($@) {
     close(IN);
     unless( $source =~ s/\b(use utf8)/# $1/ ) {
         Locale::Maketext::DEBUG and
-        print "I didn't see 'use utf8' in $path\n";
+        warn "I didn't see 'use utf8' in $path\n";
     }
     eval $source;
     die "Can't compile $path\n...The error I got was:\n$@\nAborting" if $@;

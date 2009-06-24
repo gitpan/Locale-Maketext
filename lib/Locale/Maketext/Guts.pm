@@ -1,6 +1,7 @@
 package Locale::Maketext::Guts;
 
-$VERSION = '1.13';
+$VERSION = '1.13_82';
+$VERSION = eval $VERSION;
 
 BEGIN {
     # Just so we're nice and define SOMETHING in "our" package.

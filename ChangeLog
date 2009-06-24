@@ -1,6 +1,11 @@
 Revision history for Perl suite Locale::Maketext
 
 2009-06-23  Adriano Ferreira
+    * Development release 1.13_82
+
+    One more recipe: on [numf,...] with decimal precision
+
+2009-06-23  Adriano Ferreira
     * Development release 1.13_81
 
     Change a few straggling 'DEBUG and print' to 'DEBUG and warn' (thanks Dan Muey)
