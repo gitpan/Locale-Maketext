@@ -8,6 +8,7 @@ lib/Locale/Maketext/TPJ13.pod
 Makefile.PL
 MANIFEST
 MANIFEST.SKIP
+META.json
 META.yml			Module meta-data (added by MakeMaker)
 perlcriticrc
 README
@@ -23,5 +24,5 @@ t/50_super.t
 t/60_super.t
 t/70_fail_auto.t
 t/90_utf8.t
+t/91_backslash.t
 t/pod.t
-META.json                                Module JSON meta-data (added by MakeMaker)
